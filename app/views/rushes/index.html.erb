@@ -4,7 +4,8 @@
   <%= text_field_tag('name') %>
   <%= submit_tag('Search') %>
 <%- end %>
-<table>
+<hr />
+<table class="pure-table">
   <thead>
     <tr>
       <% Rush::NAME_ATTR_PAIRS.each do |title, attr| %>
@@ -25,7 +26,7 @@
 </table>
 <% page = @page_metadata[:page] %>
 <% remaining = @page_metadata[:remaining] %>
-<%= link_to("<< prev", rushes_path(@index_params.merge(page: page - 1))) if page > 0 %>
-<%= link_to("next >>", rushes_path(@index_params.merge(page: page + 1))) if remaining > 0 %>
-<br />
-<%= link_to("Download CSV", rushes_path(@index_params.merge(format: 'csv'))) %>
+<%= link_to("<< prev", rushes_path(@index_params.merge(page: page - 1)), class: 'pure-button') if page > 0 %>
+<%= link_to("next >>", rushes_path(@index_params.merge(page: page + 1)), class: 'pure-button') if remaining > 0 %>
+<hr />
+<%= link_to("Download CSV", rushes_path(@index_params.merge(format: 'csv')), class: 'pure-button') %>
